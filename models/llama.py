@@ -72,6 +72,25 @@ def llama_nll_fn(model, input_arr, target_arr, settings:SerializerSettings, tran
     """ Returns the NLL/dimension (log base e) of the target array (continuous) according to the LM 
         conditioned on the input array. Applies relevant log determinant for transforms and
         converts from discrete NLL of the LLM to continuous by assuming uniform within the bins.
+        
+    Args:
+        model: The LM model.
+        input_arr: The context array.
+        target_arr: The ground truth array.
+        settings: The SerializerSettings object.
+        transform: The transform function.
+        count_seps: Whether to count separators.
+        temp: The temperature.
+        cache_model: Whether to cache the model and tokenizer for faster repeated calls.
+        
+    Returns:
+        The transformed NLL minus the average log determinant of the Jacobian matrix.
+    """
+    # Function implementation...
+def llama_nll_fn(model, input_arr, target_arr, settings:SerializerSettings, transform, count_seps=True, temp=1, cache_model=True):
+    """ Returns the NLL/dimension (log base e) of the target array (continuous) according to the LM 
+        conditioned on the input array. Applies relevant log determinant for transforms and
+        converts from discrete NLL of the LLM to continuous by assuming uniform within the bins.
     inputs:
         input_arr: (n,) context array
         target_arr: (n,) ground truth array

@@ -41,6 +41,15 @@ model_predict_fns = {
 }
 
 def is_gpt(model):
+    """
+    Check if the given model is a GPT model.
+
+    Args:
+        model (str): The model name to check.
+
+    Returns:
+        bool: True if the model is a GPT model, False otherwise.
+    """
     return any([x in model for x in ['ada', 'babbage', 'curie', 'davinci', 'text-davinci-003', 'gpt-4']])
 
 # Specify the output directory for saving results
